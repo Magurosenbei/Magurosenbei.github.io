@@ -138,6 +138,11 @@ async function form_submitted (event) {
 	
 	group.value = uuidv4();
 
+	const buttons = Array.from(document.querySelectorAll("section#rsvp form button"));
+	const loader  = document.getElementById("rsvp-loader");
+	buttons.forEach(btn => btn.disabled = true);
+	loader.style = "";
+
 	try {
 		const payload = {};
 
@@ -197,5 +202,7 @@ async function form_submitted (event) {
 	catch (error) {
 		console.error("Error occurred", error);
 	}
+	buttons.forEach(btn => btn.disabled = false);
+	loader.style = "display: none;";
 	return false;
 }
