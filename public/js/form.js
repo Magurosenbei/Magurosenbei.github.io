@@ -154,7 +154,7 @@ async function form_submitted (event) {
 			}
 			payload[key].push(value);
 		}
-		if (payload["Group"] == 1) {
+		if (payload["Group"] == "1") {
 			if (!Array.isArray(payload["GuestNameFirst"])) {
 				payload["GuestNameFirst"] = [payload["GuestNameFirst"]];
 				payload["GuestNameLast"]  = [payload["GuestNameLast"]];
