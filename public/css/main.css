@@ -339,17 +339,17 @@ body.landing section#countdown {
 
 
 body.landing section#countdown h2 {
-	font-size  : x-large;
-	font-weight: bold;
-}
-
-body.landing section#countdown h3 {
 	font-size  : large;
 	font-weight: bold;
 }
 
+body.landing section#countdown h3 {
+	font-size  : medium;
+	font-weight: bold;
+}
+
 body.landing section#countdown h4 {
-	font-size: medium;
+	font-size: small;
 }
 
 body.landing section#navigation h2 {

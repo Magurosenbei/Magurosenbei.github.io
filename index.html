@@ -71,10 +71,10 @@
 						<h2 id="countdown-header"></h2>
 					</div>
 					<div class="row">
-						<div class="col" id="timer-dd"><h2>Days</h2></div>
-						<div class="col" id="timer-hh"><h2>Hours</h2></div>
-						<div class="col" id="timer-mm"><h2>Minutes</h2></div>
-						<div class="col" id="timer-ss"><h2>Seconds</h2></div>
+						<div class="col" id="timer-dd"><h3>Days</h3></div>
+						<div class="col" id="timer-hh"><h3>Hours</h3></div>
+						<div class="col" id="timer-mm"><h3>Minutes</h3></div>
+						<div class="col" id="timer-ss"><h3>Seconds</h3></div>
 					</div>
 					<div class="row" id="countdown-body">
 					</div>
@@ -243,7 +243,7 @@
 							<div class="col">
 								<div class="form-floating mb-3">
 									<input class="form-control" id="input-name-last" name="NameLast" type="text" pattern="[a-zA-Z]{3,}"   required>
-									<label class="form-label"   for="input-name-last">Last Name</label>
+									<label class="form-label"   for="input-name-last">Last Name (Surname)</label>
 									<div class="invalid-feedback"></div>
 								</div>
 							</div>
@@ -252,7 +252,7 @@
 
 						<div class="col">
 							<div class="form-floating mb-3">
-								<input class="form-control" id="input-email" name="Email" type="email" required>
+								<input class="form-control" id="input-email" name="Email" type="email">
 								<label class="form-label" for="input-email">Email Address</label>
 								<div class="invalid-feedback">Make sure your email address is correct</div>
 								<div class="valid-feedback">Looks good!</div>
@@ -275,6 +275,16 @@
 									<option value="1"          >Yes</option>
 								</select>
 								<label class="form-label" for="input-driving">Are you driving?</label>
+							</div>
+						</div>
+
+						<div class="col">
+							<p>Please provide your postal address to receieve your complementary parking tickets</p>
+							<div class="form-floating mb-3">
+								<input class="form-control" id="input-address" name="address" type="text">
+								<label class="form-label" for="input-address">Postal Address</label>
+								<div class="invalid-feedback">Make sure your address is correct</div>
+								<div class="valid-feedback">Looks good!</div>
 							</div>
 						</div>
 
@@ -323,9 +333,6 @@
 				</a>
 			</div>
 		</footer>
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dialog-rsvp-fail">
-			Launch demo modal
-		  </button>
 
 		<div class="modal fade" id="dialog-rsvp-confirmed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">

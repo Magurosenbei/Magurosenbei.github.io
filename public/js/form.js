@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	const btnGuestAdd = document.getElementById("btn-add-guest");
 	const selAddGuest = document.getElementById("input-member-extra");
 
-	btnActive  .addEventListener("click", show_form.bind(this), false);
-	btnGuestAdd.addEventListener("click", form_guest_add.bind(this), false);
+	btnActive  .addEventListener("click",  show_form.bind(this), false);
+	btnGuestAdd.addEventListener("click",  form_guest_add.bind(this), false);
 	selAddGuest.addEventListener("change", form_has_extra.bind(this), false);
 	form.addEventListener("submit", form_submitted, false);
 
@@ -61,11 +61,21 @@ function form_guest_del(uuid) {
 	console.log(`Removed guest ${uuid}`);
 	const guest     = document.getElementById(`guest-${uuid}`);
 	const container = document.getElementById("form-guest-extra");
+	const counter   = document.getElementById("guest-remaining");
 	const idx       = parseInt(container.getAttribute("index") || "0");
 
 	guest.parentElement.removeChild(guest);
 
 	container.setAttribute("index", Math.max(0, (idx - 1)));
+	counter.innerHTML = 5 - (idx - 1);
+
+	if (idx - 1 == 0) {
+		/** @type {HTMLSelectElement} */
+		const selAddGuest = document.getElementById("input-member-extra");
+
+		selAddGuest.value = selAddGuest.options[0].value;
+		selAddGuest.dispatchEvent(new Event("change"));
+	}
 }
 
 /**
@@ -96,7 +106,7 @@ function form_guest_add(event) {
 	<div class="col">
 		<div class="form-floating mb-3">
 			<input class="form-control" id="input-name-last" name="GuestNameLast" type="text" pattern="[a-zA-Z]{3,}"   required>
-			<label class="form-label"   for="input-name-last">Last Name</label>
+			<label class="form-label"   for="input-name-last">Last Name (Surname)</label>
 			<div class="invalid-feedback"></div>
 		</div>
 	</div>
@@ -144,6 +154,14 @@ async function form_submitted (event) {
 			}
 			payload[key].push(value);
 		}
+		if (payload["Group"] == 1) {
+			if (!Array.isArray(payload["GuestNameFirst"])) {
+				payload["GuestNameFirst"] = [payload["GuestNameFirst"]];
+				payload["GuestNameLast"]  = [payload["GuestNameLast"]];
+			}
+
+		}
+
 		console.log("Sending", JSON.stringify(payload));
 		const res = await fetch(form.action, {
 			method  : "POST",
