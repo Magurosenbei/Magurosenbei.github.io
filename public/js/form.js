@@ -98,14 +98,14 @@ function form_guest_add(event) {
 		element.innerHTML = `
 	<div class="col">
 		<div class="form-floating">
-			<input class="form-control" id="input-name-first" name="GuestNameFirst" type="text" pattern="[a-zA-Z]{3,}" required>
+			<input class="form-control" id="input-name-first" name="GuestNameFirst" type="text" pattern="[a-zA-Z]{2,}" required>
 			<label class="form-label"   for="input-name-first">First Name</label>
 			<div class="invalid-feedback"></div>
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-floating mb-3">
-			<input class="form-control" id="input-name-last" name="GuestNameLast" type="text" pattern="[a-zA-Z]{3,}"   required>
+			<input class="form-control" id="input-name-last" name="GuestNameLast" type="text" pattern="[a-zA-Z]{2,}"   required>
 			<label class="form-label"   for="input-name-last">Last Name (Surname)</label>
 			<div class="invalid-feedback"></div>
 		</div>
