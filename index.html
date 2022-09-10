@@ -227,24 +227,27 @@
 						You are all set. We let you know to pass you your parking ticket and invitation card.
 					</p>
 					
-					<form   class="form disabled"         id="form-rsvp"
+					<form   class="form disabled needs-validation" id="form-rsvp"
 							enctype="application/json"
 							method="post"
 							action="https://script.google.com/macros/s/AKfycbwZkhfJWNH2cufQG2xfHx3aE6wET0hWsGGAk0DjLCC1dWw5FkM5-B6woyKWc9HpBzbd/exec"
+							novalidate
 					>
 						<div class="row">
 							<div class="col">
 								<div class="form-floating">
-									<input class="form-control" id="input-name-first" name="NameFirst" type="text" pattern="[a-zA-Z]{2,}" required>
+									<input class="form-control" id="input-name-first" name="NameFirst" type="text" pattern="[a-zA-Z][a-zA-Z0-9 ]{1,}" required>
 									<label class="form-label"   for="input-name-first">First Name</label>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Must be Alphanumeric and space and at least 2 characters.</div>
+									<div class="valid-feedback">Okay!</div>
 								</div>
 							</div>
 							<div class="col">
 								<div class="form-floating mb-3">
-									<input class="form-control" id="input-name-last" name="NameLast" type="text" pattern="[a-zA-Z]{2,}"   required>
+									<input class="form-control" id="input-name-last" name="NameLast" type="text" pattern="[a-zA-Z][a-zA-Z0-9 ]{2,}"   required>
 									<label class="form-label"   for="input-name-last">Last Name (Surname)</label>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Must be Alphanumeric and space and at least 2 characters.</div>
+									<div class="valid-feedback">Okay!</div>
 								</div>
 							</div>
 						</div>
@@ -253,9 +256,9 @@
 						<div class="col">
 							<div class="form-floating mb-3">
 								<input class="form-control" id="input-email" name="Email" type="email">
-								<label class="form-label" for="input-email">Email Address</label>
+								<label class="form-label" for="input-email">Email Address (Optional)</label>
 								<div class="invalid-feedback">Make sure your email address is correct</div>
-								<div class="valid-feedback">Looks good!</div>
+								<div class="valid-feedback">Okay!</div>
 							</div>
 						</div>
 						
@@ -264,7 +267,7 @@
 								<input class="form-control" id="input-contact" name="Contact" type="text" pattern="^[3689][0-9]{7,7}$" required>
 								<label class="form-label" for="input-email">Contact Number</label>
 								<div class="invalid-feedback">Accepts only 8 digits, starting with 3, 6, 8 or 9</div>
-								<div class="valid-feedback">Looks good!</div>
+								<div class="valid-feedback">Okay!</div>
 							</div>
 						</div>
 
@@ -284,7 +287,7 @@
 								<input class="form-control" id="input-address" name="address" type="text">
 								<label class="form-label" for="input-address">Postal Address</label>
 								<div class="invalid-feedback">Make sure your address is correct</div>
-								<div class="valid-feedback">Looks good!</div>
+								<div class="valid-feedback">Okay!</div>
 							</div>
 						</div>
 
@@ -301,13 +304,14 @@
 
 						<div class="col" style="display: none;" id="input-section-extra-guest">
 							<button class="btn btn-secondary w-100 mb-3" type="button" id="btn-add-guest">Bring Someone along (<span id="guest-remaining">5</span> Remaining)</button>
-							<div class="row" id="form-guest-extra" index="0"></div>
+							<div class="row mb-3" id="form-guest-extra" index="0"></div>
 						</div>
 
 						<div class="col">
 							<div class="form-floating mb-3">
 								<textarea class="form-control" rows="3" name="Details" id="input-details"></textarea>
-								<label class="form-label" for="input-details">Other Details</label>
+								<label class="form-label" for="input-details">Other Details (Optional)</label>
+								<div class="valid-feedback">Okay!</div>
 							</div>
 						</div>
 						

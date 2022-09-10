@@ -638,3 +638,27 @@ body.landing section#food ul {
 .modal-dialog {
 	margin-top: 25vh;
 }
+
+.valid-feedback {
+	color: #55f7ac;
+}
+
+.invalid-feedback {
+	color: #F06060;
+}
+
+.was-validated .form-control:valid {
+	border-color: #55f7ac;;
+}
+
+.was-validated .form-control:invalid {
+	border-color: #F06060;;
+}
+
+.was-validated .form-select:valid {
+	border-color: #55f7ac;;
+}
+
+.was-validated .form-select:invalid {
+	border-color: #F06060;;
+}

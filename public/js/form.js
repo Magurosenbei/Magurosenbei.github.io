@@ -24,7 +24,7 @@ document.addEventListener("load", function (event) {
 function show_form(event) {
 	const form = document.getElementById("form-rsvp");
 
-	form.className     = "form";
+	form.className     = "form needs-validation";
 	event.target.style = "display: none;";
 }
 
@@ -97,17 +97,19 @@ function form_guest_add(event) {
 		element.id        = `guest-${id}`;
 		element.innerHTML = `
 	<div class="col">
-		<div class="form-floating">
-			<input class="form-control" id="input-name-first" name="GuestNameFirst" type="text" pattern="[a-zA-Z]{2,}" required>
+		<div class="form-floating mb-3">
+			<input class="form-control" id="input-name-first" name="GuestNameFirst" type="text" pattern="[a-zA-Z][a-zA-Z0-9 ]{1,}" required>
 			<label class="form-label"   for="input-name-first">First Name</label>
-			<div class="invalid-feedback"></div>
+			<div class="invalid-feedback">Must be Alphanumeric and space and at least 2 characters.</div>
+			<div class="valid-feedback">Okay!</div>
 		</div>
 	</div>
 	<div class="col">
 		<div class="form-floating mb-3">
-			<input class="form-control" id="input-name-last" name="GuestNameLast" type="text" pattern="[a-zA-Z]{2,}"   required>
+			<input class="form-control" id="input-name-last" name="GuestNameLast" type="text" pattern="[a-zA-Z][a-zA-Z0-9 ]{1,}"   value="">
 			<label class="form-label"   for="input-name-last">Last Name (Surname)</label>
-			<div class="invalid-feedback"></div>
+			<div class="invalid-feedback">Must be Alphanumeric and space and at least 2 characters.</div>
+			<div class="valid-feedback">Okay!</div>
 		</div>
 	</div>
 	<div class="col-1">
@@ -131,8 +133,19 @@ async function form_submitted (event) {
 	console.log("Form submitted", event);
 	/** @type {HTMLFormElement} */
 	const form = event.target;
+
 	event.preventDefault();
 	event.stopPropagation();
+
+	if (!form.checkValidity()) {
+		console.error("Form Error");
+		form.classList.add("was-validated");
+		return false;
+	}
+	else {
+		form.classList.add("was-validated");
+		console.log("Form Okay");
+	}
 
 	const group = document.getElementById("input-group");
 	
@@ -186,7 +199,7 @@ async function form_submitted (event) {
 			form.reset();
 			dialog.toggle();
 
-			form.className = "form disabled";
+			form.className = "form disabled needs-validation";
 			finished.style = "display: inline;";
 		}
 		else {
